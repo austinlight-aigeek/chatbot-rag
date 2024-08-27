@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   dynamodb-local:
     command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
@@ -13,11 +11,11 @@ services:
     working_dir: /home/dynamodblocal
   postgres-local:
     image: "postgres:latest"
-    container_name: cgk_postgres
+    container_name: postres
     environment:
-      POSTGRES_DB: chatgptdevDB
-      POSTGRES_USER: cgk_user
-      POSTGRES_PASSWORD: cgk_password
+      POSTGRES_DB: chatbot-rag
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
     volumes:
       - "pgdata:/var/lib/postgresql/data"
     ports:

@@ -41,11 +41,11 @@ Before you begin, ensure you have installed:
   OPEN_AI_KEY=[[OPENAI KEY HERE]]
 
   # PostgreSQL
-  POSTGRES_USER=cgk_user
-  POSTGRES_PASSWORD=cgk_password
+  POSTGRES_USER=user
+  POSTGRES_PASSWORD=password
   POSTGRES_SERVER=localhost
   POSTGRES_PORT=5432
-  POSTGRES_DB=chatgptdevDB
+  POSTGRES_DB=chatbot-rag
 
   # Redis
   REDIS_HOST=localhost

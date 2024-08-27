@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   api:
     build:
@@ -8,18 +6,18 @@ services:
       - PORT=80
       - AWS_REGION=us-west-2
       - RUN_LOCALLY=true
-      - POSTGRES_SERVER=cgk_postgres
+      - POSTGRES_SERVER=postgres
       - DYNAMO_DB_ENDPOINT=http://dynamodb:8000
       - REDIS_HOST=redis
-      - AWS_ACCESS_KEY_ID=accesskeyid
-      - AWS_SECRET_ACCESS_KEY=secretaccsesskey
+      - AWS_ACCESS_KEY_ID=myFakeId
+      - AWS_SECRET_ACCESS_KEY=myFakeSecreteKey
     env_file:
       - ../.env
     ports:
       - "80"
     depends_on:
       - dynamodb
-      - cgk_postgres
+      - postgres
       - redis
 
   dynamodb:
@@ -31,12 +29,12 @@ services:
       - "../docker/dynamodb:/home/dynamodblocal/data"
     working_dir: /home/dynamodblocal
 
-  cgk_postgres:
+  postgres:
     image: "postgres:latest"
     environment:
-      POSTGRES_DB: chatgptdevDB
-      POSTGRES_USER: cgk_user
-      POSTGRES_PASSWORD: cgk_password
+      POSTGRES_DB: chatbot-rag
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
     volumes:
       - "run_locally_pgdata:/var/lib/postgresql/data"
     expose:
@@ -60,11 +58,11 @@ services:
 
 volumes:
   run_locally_pgdata:
-    external: true
+    external: false
   run_locally_redis_data:
-    external: true
+    external: false
 
 networks:
   default:
     driver: bridge
-    name: smart-owl-network
+    name: chatbot-rag

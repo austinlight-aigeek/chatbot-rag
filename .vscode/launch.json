@@ -20,7 +20,8 @@
       "env": {
         "RUN_LOCALLY": "true"
       },
-      "jinja": true
+      "jinja": true,
+      "justMyCode": false
     }
   ]
 }
